@@ -45,14 +45,9 @@ public class Contactos{
     }
     
     public int elementoVacio(){
-        if(telefono[0] == null){
-            return 0;
-        }
-        else{
-            for(int i = 1; i < telefono.length ; i++){
-                if(telefono[i] != null && telefono[i].length() == 0){
+        for(int i = 0; i < 5 ; i++){
+            if(telefono[i] != null && telefono[i].length() == 0){
                     return i;
-                }
             }
         }
         return -1;
@@ -122,6 +117,5 @@ public class Contactos{
         localidad = getLocalidad();
         setDireccion(direccion);
         direccion = getDireccion();
-        
     }
 }

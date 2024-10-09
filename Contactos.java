@@ -7,6 +7,12 @@ public class Contactos{
    private String direccion;
    String[] telefono = new String[5];
    Scanner sc = new Scanner(System.in);
+   public void Contactos(){
+        /*setNombre(nombre);
+        setLocalidad(localidad);
+        setDireccion(direccion);*/
+        agregarTelefono();
+  }
     
    public void listarTelefonos(){
     
@@ -44,20 +50,20 @@ public class Contactos{
         return nombre;
     }
     
-    public int elementoVacio(){
-        for(int i = 0; i < 5 ; i++){
-            if(telefono[i] != null && telefono[i].length() == 0){
-                    return i;
+   public int elementoVacio() {
+        for (int i = 0; i < 5; i++) {
+            if (telefono[i] == null || telefono[i].isEmpty()) {
+                return i;
             }
         }
         return -1;
     }
     
-    public boolean validarCaracteristica(String c) {
-        if (c.startsWith("0")) {
-            if (c.length() >= 3 && c.length() <= 5) {
-                for (int i = 0; i < c.length(); i++) {
-                    if (!Character.isDigit(c.charAt(i))) {
+    public boolean validarCaracteristica(String caracteristica) {
+        if (caracteristica.startsWith("0")) {
+            if (caracteristica.length() >= 3 && caracteristica.length() <= 5) {
+                for (int i = 0; i < caracteristica.length(); i++) {
+                    if (!Character.isDigit(caracteristica.charAt(i))) {
                         return false;
                     }
                 }
@@ -67,55 +73,42 @@ public class Contactos{
         return false; 
     }
     
-    public boolean validarNumero(int n){
-        String num = String.valueOf(n);
-        if(num.startsWith("0")){
-            if(num.length() < 5 || num.length() > 7){
-                for(int i = 0; i < num.length(); i++){
-                    if(!Character.isDigit(num.charAt(i))){
-                        return false;
-                    }
-                }
+    public boolean validarNumero(int numero){
+            if(String.valueOf(numero).length()>= 5 && String.valueOf(numero).length() <= 7 ){
                 return true;
             }
-        }
-        return false;
+            return false;
     }
 
      public void agregarTelefono(){
-     if(elementoVacio() == -1){
-            System.out.println("No existen más lugares para agregar números telefónicos");
-        }else{
             System.out.println("Ingrese caracterstica telefónica");
             String caracteristica = sc.nextLine();
-            do{
-                System.out.println("¡Caracteristica no valida!");
-                caracteristica = sc.nextLine();
-            }while(!validarCaracteristica(caracteristica));
+            if(!validarCaracteristica(caracteristica)){
+                do{
+                    System.out.println("¡Caracteristica no valida!");
+                    caracteristica = sc.nextLine();
+                }while(!validarCaracteristica(caracteristica));
+            }
             System.out.println("Ingrese numero telefonico");
             int numero = sc.nextInt();
-            do{
-                System.out.println("¡numero no valido!");
-                numero = sc.nextInt();
-            }while(!validarNumero(numero));
-            telefono[elementoVacio()] = caracteristica + "-" + numero;
-        }
-    }
-    
-    public void agregarTelefono(String caracteristica, int numero){
-        if(elementoVacio() == -1){
-            System.out.println("No existen más lugares para agregar números telefónicos");
-        }else{
-            telefono[elementoVacio()] = caracteristica + "-" + numero;
-        }
-    }
-    
-    public Contactos(String nombre, String localidad, String direccion, int caracteristica, String numero){
-        setNombre(nombre);
-        nombre = getNombre();
-        setLocalidad(localidad);
-        localidad = getLocalidad();
-        setDireccion(direccion);
-        direccion = getDireccion();
+            if(!validarNumero(numero)){
+                do{
+                    System.out.println("¡numero no valido!");
+                    numero = sc.nextInt();
+                }while(!validarNumero(numero));
+            }
+            
+            for (int i = 0; i < 5; i++) {
+                if (telefono[i] == null || telefono[i].isEmpty()) {
+                    telefono[i] = caracteristica+"-"+numero;
+                    break;
+                }
+            }
+            for (int i = 0; i < 5; i++) {
+               System.out.println(telefono[i]);
+               if(telefono[i] == null){
+                    System.out.println("vacio ndeah skere");
+                }
+            }
     }
 }

@@ -1,26 +1,12 @@
 import java.util.*;
 public class PruebasByme{
+   private String nombre;
+   private String localidad;
+   private String direccion;
    String[] telefono = new String[5];
-   Scanner key = new Scanner(System.in);
-    public void PruebasByme(){
-        for(int i = 0; i < 5; i++){
-            System.out.println("introduce el number :v");
-            telefono[i] = key.nextLine();
-            System.out.println("-----------------------------------------------------");
-            if(telefono[i] == "EXIT"){
-                break;
-            }
-        }
-
-        System.out.println(elementoVacio());
-        
+   public void PruebasByme(String caracteristica, int numero){
+    
     }
-    public int elementoVacio(){
-        for(int i = 0; i < 5 ; i++){
-            if(telefono[i] != null && telefono[i].length() == 0){
-                    return i;
-            }
-        }
-        return -1;
-    }
+    
+    
 }

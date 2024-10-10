@@ -79,7 +79,15 @@ public class Contactos{
             }
             return false;
     }
-
+    
+    public void agregarTelefono(String caracteristica, int numero){
+        if(caracteristica.length() > 0){
+            if(String.valueOf(numero).length() > 0){
+                
+            }
+        }
+    }
+    
      public void agregarTelefono(){
             System.out.println("Ingrese caracterstica telefónica");
             String caracteristica = sc.nextLine();
@@ -97,17 +105,10 @@ public class Contactos{
                     numero = sc.nextInt();
                 }while(!validarNumero(numero));
             }
-            
             for (int i = 0; i < 5; i++) {
                 if (telefono[i] == null || telefono[i].isEmpty()) {
                     telefono[i] = caracteristica+"-"+numero;
                     break;
-                }
-            }
-            for (int i = 0; i < 5; i++) {
-               System.out.println(telefono[i]);
-               if(telefono[i] == null){
-                    System.out.println("vacio ndeah skere");
                 }
             }
     }

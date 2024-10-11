@@ -7,11 +7,17 @@ public class Contactos{
    private String direccion;
    String[] telefono = new String[5];
    Scanner sc = new Scanner(System.in);
-   public void Contactos(){
-        /*setNombre(nombre);
+   public void Contactos(String nombre, String localidad, String direccion, String caracteristica, int numero){
+        setNombre(nombre);
         setLocalidad(localidad);
-        setDireccion(direccion);*/
-        agregarTelefono();
+        setDireccion(direccion);
+        if(caracteristica.length() > 0){
+            if(String.valueOf(numero).length() > 0){
+                agregarTelefono(caracteristica, numero);
+            }
+        }else{
+            agregarTelefono();
+        }
   }
     
    public void listarTelefonos(){

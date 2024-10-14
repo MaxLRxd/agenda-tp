@@ -21,7 +21,11 @@ public class Contactos{
   }
     
    public void listarTelefonos(){
-    
+        for(int i = 1; i < 5; i++){
+            if (telefono[i] != null) {
+                System.out.println(telefono[i]);
+            }else{System.out.println("No hay numeros guardados");}
+        }
     }
    
     public void modificarTelefonos(){
